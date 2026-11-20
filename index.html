@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXORA | Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">✳</div>
+            <h2>NEXORA</h2>
+        </div>
+
+        <div class="side-label">WORKSPACE</div>
+
+        <nav>
+            <button class="nav-item active" data-filter="all">
+                <span>▦</span> All Tasks
+                <span class="nav-count" id="sidebarTotal">0</span>
+            </button>
+
+            <button class="nav-item" data-filter="active">
+                <span>◷</span> In Progress
+            </button>
+
+            <button class="nav-item" data-filter="completed">
+                <span>✓</span> Completed
+            </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="sidebar-card">
+                <div class="small-star">✦</div>
+                <h3>Stay focused.</h3>
+                <p>Small steps every day lead to big results.</p>
+                <div class="mini-progress">
+                    <div></div>
+                </div>
+                <span class="side-quote">Keep moving forward ↗</span>
+            </div>
+
+            <div class="profile">
+                <div class="avatar">N</div>
+                <div>
+                    <h4>NEXORA USER</h4>
+                    <p>Personal workspace</p>
+                </div>
+                <span class="profile-dot"></span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+            <div class="breadcrumb">
+                Workspace <span>/</span> Overview
+            </div>
+
+            <div class="topbar-right">
+                <div class="live-status">
+                    <span></span> Your workspace is active
+                </div>
+                <div class="top-icon">✦</div>
+            </div>
+        </header>
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-left">
+                <p class="welcome-text">WELCOME TO YOUR WORKSPACE</p>
+
+                <h1>Make ideas<br> <span>happen.</span></h1>
+
+                <p class="hero-description">
+                    Organize your thoughts, track your progress,
+                    and turn your goals into reality.
+                </p>
+
+                <div class="hero-date">
+                    <span>◷</span>
+                    <span id="todayDate"></span>
+                </div>
+            </div>
+
+            <div class="hero-art">
+                <div class="orbit orbit-one"></div>
+                <div class="orbit orbit-two"></div>
+                <div class="orbit orbit-three"></div>
+
+                <div class="planet">
+                    <div class="planet-inner">✳</div>
+                </div>
+
+                <div class="floating-star star-one">✦</div>
+                <div class="floating-star star-two">✧</div>
+                <div class="floating-star star-three">·</div>
+
+                <div class="orbit-label">FOCUS<br>ON GROWTH</div>
+            </div>
+        </section>
+
+        <!-- STATISTICS -->
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span class="stat-label">TOTAL TASKS</span>
+                    <span class="stat-icon lime-icon">▦</span>
+                </div>
+                <h2 id="totalTasks">0</h2>
+                <p class="stat-description">Tasks in your workspace</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span class="stat-label">IN PROGRESS</span>
+                    <span class="stat-icon orange-icon">◷</span>
+                </div>
+                <h2 id="activeTasks">0</h2>
+                <p class="stat-description">Tasks to complete</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span class="stat-label">COMPLETED</span>
+                    <span class="stat-icon blue-icon">✓</span>
+                </div>
+                <h2 id="completedTasks">0</h2>
+                <p class="stat-description">Tasks you've finished</p>
+            </div>
+
+        </section>
+
+        <!-- PROGRESS -->
+        <section class="progress-card">
+
+            <div class="progress-header">
+                <div>
+                    <p class="section-mini-title">YOUR PROGRESS</p>
+                    <h3>Daily productivity</h3>
+                </div>
+
+                <div class="progress-percentage" id="progressText">0%</div>
+            </div>
+
+            <div class="progress-track">
+                <div id="progressBar"></div>
+            </div>
+
+            <div class="progress-footer">
+                <span id="progressCount">0 of 0 completed</span>
+                <span id="progressMessage">Let's get started!</span>
+            </div>
+
+        </section>
+
+        <!-- TASK SECTION -->
+        <section class="task-section">
+
+            <div class="section-heading">
+                <div>
+                    <p class="section-mini-title">YOUR WORKSPACE</p>
+                    <h2>Task board <span class="heading-star">✳</span></h2>
+                </div>
+
+                <div class="board-status">
+                    <span class="status-light"></span> Organized & ready
+                </div>
+            </div>
+
+            <!-- ADD TASK -->
+            <div class="task-input-card">
+
+                <div class="input-area">
+                    <span class="input-plus">＋</span>
+                    <input type="text" id="taskInput"
+                           placeholder="Write down your next task...">
+                </div>
+
+                <div class="input-options">
+
+                    <select id="category">
+                        <option value="Study">📚 Study</option>
+                        <option value="Work">💻 Work</option>
+                        <option value="Personal">🌱 Personal</option>
+                        <option value="Project">🚀 Project</option>
+                    </select>
+
+                    <select id="priority">
+                        <option value="Medium">Medium Priority</option>
+                        <option value="High">High Priority</option>
+                        <option value="Low">Low Priority</option>
+                    </select>
+
+                    <input type="date" id="dueDate">
+
+                    <button id="addTaskBtn">
+                        Add task <span>↗</span>
+                    </button>
+
+                </div>
+            </div>
+
+            <!-- SEARCH -->
+            <div class="search-box">
+                <span>⌕</span>
+                <input type="text" id="searchInput"
+                       placeholder="Search tasks by name or category...">
+                <span class="search-hint">SEARCH</span>
+            </div>
+
+            <!-- FILTER -->
+            <div class="task-toolbar">
+
+                <div class="filter-group">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="active">Active</button>
+                    <button class="filter-btn" data-filter="completed">Done</button>
+                </div>
+
+                <span id="taskCount">0 tasks</span>
+            </div>
+
+            <!-- TASKS -->
+            <div id="taskList"></div>
+
+            <!-- EMPTY STATE -->
+            <div id="emptyState" class="empty-state">
+                <div class="empty-circle">✳</div>
+                <h3>Nothing on your board</h3>
+                <p>Your next big thing starts with one small task.</p>
+            </div>
+
+        </section>
+
+        <footer class="footer">
+            <span>MADE FOR YOUR PRODUCTIVITY</span>
+            <span>NEXORA <span class="footer-star">✳</span> 2026</span>
+        </footer>
+
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
